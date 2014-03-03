@@ -23,7 +23,7 @@ function prepare {
   replaceJsonProp "component.json" "version" "$VERSION"
 
   echo "-- Building and putting files in release folder"
-  grunt build
+  gulp release-build
   mkdir -p release
   cp -Rf dist/* release
 

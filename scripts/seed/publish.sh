@@ -21,7 +21,8 @@ function run {
   VERSION=$(readJsonProp "package.json" "version")
 
   echo "-- Cloning ionic-angular-cordova-seed..."
-  git clone https://$GH_ORG:$GH_TOKEN@github.com/$GH_ORG/ionic-angular-cordova-seed.git $SEED_DIR
+  git clone https://$GH_ORG:$GH_TOKEN@github.com/$GH_ORG/ionic-angular-cordova-seed.git $SEED_DIR \
+    --depth=10
 
   cd $SEED_DIR
 

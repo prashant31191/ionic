@@ -31,12 +31,12 @@ function run {
   echo "TRAVIS_PULL_REQUEST=$TRAVIS_PULL_REQUEST"
   echo "TRAVIS_COMMIT=$TRAVIS_COMMIT"
 
-  # Jshint & check for stupid mistakes
-  grunt jshint ddescribe-iit merge-conflict
+  # check for stupid mistakes
+  gulp ddescribe-iit
 
   # Run simple quick tests on Phantom to be sure any tests pass
   # Tests are run on cloud browsers after build
-  grunt karma:single --browsers=PhantomJS --reporters=dots
+  gulp karma --browsers=PhantomJS --reporters=dots
 
   if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
     echo "-- This is a pull request build; will not push build out."
@@ -62,7 +62,7 @@ function run {
   fi
 
   # Build (we are sure to build after version is bumped)
-  grunt build
+  gulp release-build
 
   # Version label used on the CDN: nightly or the version name
   if [[ $IS_RELEASE == "true" ]]; then
@@ -72,6 +72,8 @@ function run {
   fi
 
   ./scripts/cdn/publish.sh --version-label="$VERSION_LABEL"
+
+  ./scripts/docs/publish.sh
 
   ./scripts/bower/publish.sh
 
@@ -85,7 +87,7 @@ function run {
   echo ""
 
   # Do sauce unit tests and e2e tests with all browsers (takes longer)
-  grunt cloudtest
+  gulp cloudtest
 
   echo ""
   echo "--- Build and tests complete! ---"

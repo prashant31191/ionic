@@ -24,6 +24,7 @@ function run {
 
   echo "-- Cloning ionic-code..."
   git clone https://$GH_ORG:$GH_TOKEN@github.com/$GH_ORG/ionic-code.git $IONIC_CODE_DIR \
+    --depth=10
     --branch gh-pages
 
   VERSION_DIR=$IONIC_CODE_DIR/$VERSION_LABEL

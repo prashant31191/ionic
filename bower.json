@@ -51,5 +51,10 @@
     "angular-animate": "1.2.12",
     "angular-sanitize": "1.2.12",
     "angular-ui-router": "0.2.7"
+  },
+  "devDependencies": {
+    "bootstrap": "~3.1.1",
+    "lunr.js": "~0.4.5",
+    "marked": "~0.3.1"
   }
 }

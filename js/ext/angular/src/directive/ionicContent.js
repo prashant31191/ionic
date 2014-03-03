@@ -16,9 +16,10 @@ angular.module('ionic.ui.content', ['ionic.ui.service', 'ionic.ui.scroll'])
   };
 })
 
-/*
+/**
  * @ngdoc directive
  * @name ionContent
+ * @module ionic
  *
  * @description
  * The ionContent directive provides an easy to use content area that can be configured to use
